@@ -4,6 +4,7 @@ package com.school.project.schoolproject.entity;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -37,7 +38,7 @@ public class StudentEntity {
     private String name;
     private int age;
 
-    @ManyToMany (mappedBy = "students")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "students")
     private Set<CourseEntity> course;
 
 }

@@ -8,7 +8,7 @@ package com.school.project.schoolproject.entity;
 
 
 
-import java.util.List;
+
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -24,15 +24,17 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
-
-
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @Builder
 @Table(name = "course")
+@AllArgsConstructor
+@NoArgsConstructor
 public class CourseEntity {
     
     @Id
@@ -44,10 +46,10 @@ public class CourseEntity {
     private int inicio_date;
     private int fim_date;
 
-    @OneToOne (mappedBy = "course", cascade = CascadeType.ALL, fetch = FetchType.LAZY )
+    @OneToOne (mappedBy = "course", cascade = CascadeType.ALL, fetch = FetchType.EAGER )
     private TeacherEntity teacher;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable( 
         name = "student_course",
         joinColumns = { @JoinColumn(name = "student_id")},

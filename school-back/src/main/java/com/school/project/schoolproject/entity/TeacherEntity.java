@@ -38,7 +38,7 @@ public class TeacherEntity {
     private int age;
 
 
-    @OneToOne (fetch = FetchType.LAZY)
+    @OneToOne (fetch = FetchType.EAGER)
     @JoinColumn (name = "course_id")
     private CourseEntity course;
 
